@@ -100,9 +100,12 @@ public class AudioUtils {
             }
         });
         recorder.setBackgroundMusicListener(new PlayerListener() {
+            int audioLength = 0;
+
             @Override
             public void onStart(int i) {
-                Log.e("play:", "onStart:" + i);
+                audioLength = i / 1000;
+                Log.e("play:", "onStart:" + audioLength);
                 playCompletion();
             }
 
@@ -137,11 +140,10 @@ public class AudioUtils {
             @Override
             public void onProgress(int i, int i1) {
 //                Log.e("play:", "onProgress:" + i + " : " + i1);
-                if (i > 0) {
-                    handler.removeCallbacks(playStopRunnable);
-                    handler.postDelayed(playStopRunnable, 500);
+                int delayed = i1 - audioLength;
+                if (delayed < 1000) {
+                    handler.postDelayed(playStopRunnable, delayed);
                 }
-
             }
         });
         recordPath = new File(dir, fileName).getAbsolutePath();
