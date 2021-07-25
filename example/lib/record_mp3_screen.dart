@@ -147,7 +147,6 @@ class _RecordMp3ScreenState extends State<RecordMp3Screen> {
         }else{
            wavPath = value.path + "/" + nowDataTimeStr;
         }
-        startByWavPath(wavPath);
       });
     });
   }
@@ -162,10 +161,6 @@ class _RecordMp3ScreenState extends State<RecordMp3Screen> {
     recordPlugin.start();
   }
 
-  ///根据传递的路径进行语音录制
-  void startByWavPath(String wavPath) async {
-    recordPlugin.startByWavPath(wavPath);
-  }
 
   ///停止语音录制的方法
   void stop() {

@@ -152,11 +152,6 @@ class FlutterPluginRecord {
     });
   }
 
-  Future startByWavPath(String wavPath) async {
-    return await _invokeMethod('startByWavPath', <String, String>{
-      "wavPath": wavPath,
-    });
-  }
 
   Future stop() async {
     return await _invokeMethod('stop', <String, String>{
@@ -207,7 +202,8 @@ class FlutterPluginRecord {
   }
 
   dispose() {
-//     stopPlay();
+    stop();
+    stopPlay();
     _responseInitController.close();
     _responseController.close();
     _responseAmplitudeController.close();

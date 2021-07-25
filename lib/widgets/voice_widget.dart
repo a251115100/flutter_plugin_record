@@ -216,7 +216,7 @@ class _VoiceWidgetState extends State<VoiceWidget> {
 
   ///初始化语音录制的方法
   void _init() async {
-    recordPlugin?.init();
+    recordPlugin?.initRecordMp3();
   }
 
   ///开始语音录制的方法

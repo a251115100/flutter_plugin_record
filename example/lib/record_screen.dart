@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_plugin_record/flutter_plugin_record.dart';
@@ -96,13 +94,15 @@ class _RecordScreenState extends State<RecordScreen> {
             FlatButton(
               child: Text("播放本地指定路径录音文件"),
               onPressed: () {
-                playByPath(filePath,"file");
+                playByPath(filePath, "file");
               },
             ),
             FlatButton(
               child: Text("播放网络wav文件"),
               onPressed: () {
-                playByPath("https://test-1259809289.cos.ap-nanjing.myqcloud.com/test.wav","url");
+                playByPath(
+                    "https://test-1259809289.cos.ap-nanjing.myqcloud.com/test.wav",
+                    "url");
               },
             ),
             FlatButton(
@@ -142,7 +142,6 @@ class _RecordScreenState extends State<RecordScreen> {
         String nowDataTimeStr = DateUtil.getNowDateMs().toString();
         String wavPath = value.path + "/" + nowDataTimeStr + ".wav";
         print(wavPath);
-        startByWavPath(wavPath);
       });
     });
   }
@@ -157,11 +156,6 @@ class _RecordScreenState extends State<RecordScreen> {
     recordPlugin.start();
   }
 
-  ///根据传递的路径进行语音录制
-  void startByWavPath(String wavPath) async {
-    recordPlugin.startByWavPath(wavPath);
-  }
-
   ///停止语音录制的方法
   void stop() {
     recordPlugin.stop();
@@ -173,8 +167,8 @@ class _RecordScreenState extends State<RecordScreen> {
   }
 
   ///播放指定路径录音文件  url为iOS播放网络语音，file为播放本地语音文件
-  void playByPath(String path,String type) {
-    recordPlugin.playByPath(path,type);
+  void playByPath(String path, String type) {
+    recordPlugin.playByPath(path, type);
   }
 
   ///暂停|继续播放
