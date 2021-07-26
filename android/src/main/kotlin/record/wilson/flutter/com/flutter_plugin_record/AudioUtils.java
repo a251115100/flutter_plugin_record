@@ -100,12 +100,9 @@ public class AudioUtils {
             }
         });
         recorder.setBackgroundMusicListener(new PlayerListener() {
-            int audioLength = 0;
-
             @Override
             public void onStart(int i) {
-                audioLength = i / 1000;
-                Log.e("play:", "onStart:" + audioLength);
+                Log.e("play:", "onStart:" + i);
                 playCompletion();
             }
 
@@ -140,9 +137,9 @@ public class AudioUtils {
             @Override
             public void onProgress(int i, int i1) {
 //                Log.e("play:", "onProgress:" + i + " : " + i1);
-                int delayed = i1 - audioLength;
+                int delayed = i1 - i;
                 if (delayed < 1000) {
-                    handler.postDelayed(playStopRunnable, delayed);
+                    handler.postDelayed(playStopRunnable, delayed + 100);
                 }
             }
         });
