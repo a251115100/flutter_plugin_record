@@ -214,7 +214,7 @@ static DPAudioRecorder *recorderManager = nil;
     //大于最小录音时长时,发送数据
     if (audioTimeLength > MIN_RECORDER_TIME) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSUInteger location = 4100;
+            NSUInteger location = 100;
             NSData *body = [cacheAudioData subdataWithRange:NSMakeRange(location, cacheAudioData.length - location)];
             NSMutableData *data1 = WriteWavFileHeader(body.length + 44, 8000, 1, 16).mutableCopy;
             [data1 appendData:body];
