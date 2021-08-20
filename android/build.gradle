@@ -22,9 +22,9 @@ rootProject.allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-        maven{
-            url 'https://dl.bintray.com/shetiejun/maven'
-        }
+//        maven{
+//            url 'https://dl.bintray.com/shetiejun/maven'
+//        }
     }
 }
 
