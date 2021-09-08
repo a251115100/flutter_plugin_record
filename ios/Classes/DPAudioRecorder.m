@@ -79,7 +79,7 @@ static DPAudioRecorder *recorderManager = nil;
 }
 
 - (NSString *) createMp3FilePath {
-    return [NSTemporaryDirectory() stringByAppendingPathComponent:@"WAVtemporaryRadio.MP3"];
+    return [NSTemporaryDirectory() stringByAppendingPathComponent:@"WAVtemporaryRadio.mp3"];
   
 }
 - (NSString *) createWaveFilePath {
